@@ -1,12 +1,25 @@
 import React, { useState } from "react";
 
-function FilteredDishes(props){
+function FilteredDishes(props) {
 
   let [allMenus, setAllMenus] = useState(props.allMenus)
   let [filteredDishes, setFilteredDishes] = useState([])
+  let [activeDish, setActiveDish] = useState()
+
+  //show only single dish
+
+  let singleDishItem = props.singleDish.map((item)=>{
+    return (
+      <li>
+        <img src={item.strMealThumb} className="br-10" alt="img" />
+        <h5>{item.strMeal}</h5>
+      </li>
+    )
+  })
 
   //show dishes on onClick function
   function showFilteredDishesHandler(category) {
+    setActiveDish(category)
     let filteredDishesAre = allMenus.filter((item) => {
       return item.strCategory === category
     }).map((item) => {
@@ -23,10 +36,15 @@ function FilteredDishes(props){
   //show all the categories in list
   let menuCategories = props.menuCategories.map((item) => {
     return (
-      <li onClick={() => { showFilteredDishesHandler(item.strCategory) }}>{item.strCategory}</li>
+      <li
+        className={item.strCategory == activeDish ? "active" : ""}
+        onClick={() => { showFilteredDishesHandler(item.strCategory) }}>
+        {item.strCategory}
+      </li>
     )
   })
 
+  //rendering
   return (
     <div className="filterd-dishes">
       <div className="container">
@@ -44,9 +62,16 @@ function FilteredDishes(props){
             {menuCategories}
           </ul>
         </div>
+
         <div className="filtered-dishes-results flex">
           <ul className="flex flex-wrap gap-30">
-            {filteredDishes}
+            {singleDishItem}
+            {filteredDishes.length !=0 ? filteredDishes :
+              <div className="alert">
+                <h3> Sorry, No items found!!</h3>
+                <h4> Please try another dish </h4>
+                </div>
+            }
           </ul>
         </div>
       </div>

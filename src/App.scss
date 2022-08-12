@@ -183,7 +183,6 @@ header {
   }
 }
 
-
 // Special Dishes CSS
 .special-dishes {
 
@@ -260,6 +259,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
+    width: 100%;
 
     li {
       background-color: #ffb902;
@@ -318,11 +318,11 @@ header {
   border-radius: 10px;
   height: 20vh;
   width: 100%;
-  margin-bottom: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 100px;
 
   h3 {
     color: red;
@@ -333,7 +333,6 @@ header {
     margin: 0;
   }
 }
-
 
 // Pagination
 .pagination {
@@ -452,6 +451,7 @@ header {
   }
 }
 
+//dish ingredients
 .dish-ingredients {
   margin-bottom: 22px;
 
