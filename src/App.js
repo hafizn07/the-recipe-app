@@ -1,11 +1,13 @@
-import './App.css';
+import React from 'react'
+import Menus from './components/Menus'
+import './App.scss'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Hai</h1>
+    <div>
+      <Menus />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
