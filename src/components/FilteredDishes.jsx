@@ -16,13 +16,16 @@ function FilteredDishes(props) {
 
   //show only single dish
 
-  let singleDishItem = props.singleDish.map((item) => {
-    return (
-      <li>
-        <img src={item.strMealThumb} className="br-10" alt="img" />
-        <h5>{item.strMeal}</h5>
-      </li>
-    )
+  let maxSingleDish = 4
+  let singleDishItem = props.singleDish.map((item, index) => {
+    if (index < maxSingleDish) {
+      return (
+        <li>
+          <img src={item.strMealThumb} className="br-10" alt="img" />
+          <h5>{item.strMeal}</h5>
+        </li>
+      )
+    }
   })
 
   //show dishes on onClick function
