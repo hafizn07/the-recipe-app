@@ -51,6 +51,7 @@ const Menus = () => {
                     menuCategories={category}
                     allMenus={menu}
                     singleDish={singleDish}
+                    setSingleDish={setSingleDish}
                 />
                 : null}
         </div>

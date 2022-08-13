@@ -4,7 +4,7 @@ function FilteredDishes(props) {
 
   let [allMenus, setAllMenus] = useState(props.allMenus)
   let [filteredDishes, setFilteredDishes] = useState([])
-  let [activeDish, setActiveDish] = useState()
+  let [activeDish, setActiveDish] = useState("Beef")
 
   //show only single dish
 
@@ -19,6 +19,7 @@ function FilteredDishes(props) {
 
   //show dishes on onClick function
   function showFilteredDishesHandler(category) {
+    props.setSingleDish([])
     setActiveDish(category)
     let filteredDishesAre = allMenus.filter((item) => {
       return item.strCategory === category
@@ -37,7 +38,7 @@ function FilteredDishes(props) {
   let menuCategories = props.menuCategories.map((item) => {
     return (
       <li
-        className={item.strCategory == activeDish ? "active" : ""}
+        className={item.strCategory === activeDish ? "active" : ""}
         onClick={() => { showFilteredDishesHandler(item.strCategory) }}>
         {item.strCategory}
       </li>
@@ -66,7 +67,7 @@ function FilteredDishes(props) {
         <div className="filtered-dishes-results flex">
           <ul className="flex flex-wrap gap-30">
             {singleDishItem}
-            {filteredDishes.length !=0 ? filteredDishes :
+            {filteredDishes.length !==0 || singleDishItem.length !==0 ? filteredDishes :
               <div className="alert">
                 <h3> Sorry, No items found!!</h3>
                 <h4> Please try another dish </h4>
