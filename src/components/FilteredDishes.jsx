@@ -1,14 +1,21 @@
 import React, { useState } from "react";
+import Pagination from "./Pagination";
 
 function FilteredDishes(props) {
 
   let [allMenus, setAllMenus] = useState(props.allMenus)
   let [filteredDishes, setFilteredDishes] = useState([])
   let [activeDish, setActiveDish] = useState("Beef")
+  let [currentPage, setCurrentPage] = useState(1)
+  let [itemsPerPage, setItemsPerPage] = useState(4)
+
+  let indexOfLastDish = currentPage * itemsPerPage;
+  let indexOfFirstDish = indexOfLastDish - itemsPerPage;
+  let showTheseDishesNow = filteredDishes.slice(indexOfFirstDish, indexOfLastDish);
 
   //show only single dish
 
-  let singleDishItem = props.singleDish.map((item)=>{
+  let singleDishItem = props.singleDish.map((item) => {
     return (
       <li>
         <img src={item.strMealThumb} className="br-10" alt="img" />
@@ -58,7 +65,7 @@ function FilteredDishes(props) {
           </p>
         </div>
 
-        <div className="filterd-dishes">
+        <div className="filterd-dishes flex">
           <ul>
             {menuCategories}
           </ul>
@@ -67,14 +74,22 @@ function FilteredDishes(props) {
         <div className="filtered-dishes-results flex">
           <ul className="flex flex-wrap gap-30">
             {singleDishItem}
-            {filteredDishes.length !==0 || singleDishItem.length !==0 ? filteredDishes :
+            {filteredDishes.length !== 0 || singleDishItem.length !== 0 ? showTheseDishesNow :
               <div className="alert">
                 <h3> Sorry, No items found!!</h3>
                 <h4> Please try another dish </h4>
-                </div>
+              </div>
             }
           </ul>
         </div>
+
+        <Pagination
+          filteredDishes={filteredDishes}
+          itemsPerPage={itemsPerPage}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+
       </div>
     </div>
   );
