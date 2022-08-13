@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import CardDish from "./CardDish";
 import Pagination from "./Pagination";
 
 function FilteredDishes(props) {
@@ -30,13 +31,8 @@ function FilteredDishes(props) {
     setActiveDish(category)
     let filteredDishesAre = allMenus.filter((item) => {
       return item.strCategory === category
-    }).map((item) => {
-      return (
-        <li>
-          <img src={item.strMealThumb} className="br-10" alt="img" />
-          <h5>{item.strMeal}</h5>
-        </li>
-      )
+    }).map((menuItem) => {
+      return <CardDish menuItem={menuItem} />
     })
     setFilteredDishes(filteredDishesAre)
   }

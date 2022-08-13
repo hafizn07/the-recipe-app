@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import FilteredDishes from './FilteredDishes';
+import Header from './Header';
 import Hero from './Hero';
 import Loader from './Loader';
 import SpecialDishes from './SpecialDishes';
@@ -44,6 +45,7 @@ const Menus = () => {
 
     return (
         <div>
+            <Header />
             <Hero />
             {!loading ? <SpecialDishes specialMenu={menu} /> : <Loader />}
             {!loading ?

@@ -1,4 +1,5 @@
 import React from "react";
+import CardDish from "./CardDish";
 
 const SpecialDishes = (props) => {
     
@@ -6,12 +7,7 @@ const SpecialDishes = (props) => {
 
     let specialMenu = props.specialMenu.map((menuItem, index) => {
       if(index<maxSpecialDishes){
-        return(
-            <li>
-              <img src={menuItem.strMealThumb} className="br-10" alt="" />
-              <h5>{menuItem.strMeal}</h5>
-            </li>
-        )
+        return <CardDish menuItem = {menuItem} />
       }
     })
 
