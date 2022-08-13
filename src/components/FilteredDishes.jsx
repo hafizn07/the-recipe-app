@@ -30,13 +30,16 @@ function FilteredDishes(props) {
 
   //show dishes on onClick function
   function showFilteredDishesHandler(category) {
+
     props.setSingleDish([])
     setActiveDish(category)
+
     let filteredDishesAre = allMenus.filter((item) => {
       return item.strCategory === category
     }).map((menuItem) => {
       return <CardDish menuItem={menuItem} />
     })
+
     setFilteredDishes(filteredDishesAre)
   }
 

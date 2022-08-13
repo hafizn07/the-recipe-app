@@ -221,6 +221,7 @@ header {
         transition: 0.9s;
         box-shadow: 1px 1px 20px rgb(168, 166, 166);
         border-radius: 10px;
+
         h5 {
           animation: animate 10s alternate 2;
         }
@@ -389,7 +390,11 @@ header {
     width: 800px;
     height: 700px;
     border-radius: 5px;
-    padding: 20px;
+    // padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   &-close {
