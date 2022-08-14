@@ -278,6 +278,7 @@ header {
 
       &:hover {
         background-color: black;
+        color: white;
       }
     }
   }
@@ -389,8 +390,9 @@ header {
     background-color: rgb(17, 17, 17);
     width: 800px;
     height: 700px;
+    overflow-y: scroll;
     border-radius: 5px;
-    // padding: 20px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -459,6 +461,7 @@ header {
   margin-bottom: 22px;
 
   li {
+    overflow-y: scroll;
     background: white;
     padding: 8px 12px;
     border-radius: 32px;

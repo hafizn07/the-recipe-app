@@ -3,32 +3,33 @@ import CardDish from "./CardDish";
 import Popup from "./Popup";
 
 const SpecialDishes = (props) => {
-
-  const [showPopup, setShowPopup] = useState(false)
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentDish, setCurrentDish] = useState("");
 
   //function to show the popup
-  function showPopupHandler() {
-    setShowPopup(true)
+  function showPopupHandler(dishName) {
+    setShowPopup(true);
+    setCurrentDish(dishName);
   }
 
   //function to close the popup
   function closePopupHandler() {
-    setShowPopup(false)
+    setShowPopup(false);
   }
 
-  let maxSpecialDishes = 8
+  let maxSpecialDishes = 8;
 
   let specialMenu = props.specialMenu.map((menuItem, index) => {
     if (index < maxSpecialDishes) {
-      return <CardDish
-        menuItem={menuItem}
-        showPopup={showPopupHandler} />
+      return <CardDish menuItem={menuItem} showPopup={showPopupHandler} />;
     }
-  })
+  });
 
   return (
     <section className="special-dishes">
-      {showPopup && <Popup closePopup={closePopupHandler} />}
+      {showPopup && (
+        <Popup closePopup={closePopupHandler} currentDish={currentDish} allDishes={props.specialMenu} />
+      )}
       <div className="container">
         <div className="special-dishes-content text-center">
           <h2>Our special dishes</h2>
