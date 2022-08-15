@@ -24,7 +24,6 @@ function Popup({ closePopup, currentDish }) { //props destructuring
           <li>{item.strIngredient2}</li>
           <li>{item.strIngredient3}</li>
           <li>{item.strIngredient4}</li>
-          <li>{item.strIngredient5}</li>
         </ul>
       </div>
     )
