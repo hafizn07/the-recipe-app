@@ -1,12 +1,26 @@
 import React, { useContext, useState } from "react";
 import CardDish from "./CardDish";
+import Popup from "./Popup";
 import Pagination from "./Pagination";
 import { AllMenuContext } from './AllMenuContext';
 
 
 function FilteredDishes(props) {
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentDish, setCurrentDish] = useState("");
 
   const allMenus = useContext(AllMenuContext)
+
+  //function to show the popup
+  function showPopupHandler(dishName) {
+    setShowPopup(true);
+    setCurrentDish(dishName);
+  }
+
+  //function to close the popup
+  function closePopupHandler() {
+    setShowPopup(false);
+  }
 
   let [filteredDishes, setFilteredDishes] = useState([])
   let [activeDish, setActiveDish] = useState("Beef")
@@ -40,7 +54,7 @@ function FilteredDishes(props) {
     let filteredDishesAre = allMenus.filter((item) => {
       return item.strCategory === category
     }).map((menuItem) => {
-      return <CardDish menuItem={menuItem} />
+      return <CardDish menuItem={menuItem} showPopup={showPopupHandler} />
     })
 
     setFilteredDishes(filteredDishesAre)
@@ -60,6 +74,9 @@ function FilteredDishes(props) {
   //rendering
   return (
     <div className="filterd-dishes">
+      {showPopup && (
+        <Popup closePopup={closePopupHandler} currentDish={currentDish} />
+      )}
       <div className="container">
         <div className="text-center">
           <h2>Choose your dishes</h2>
