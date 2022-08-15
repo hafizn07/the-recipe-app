@@ -73,7 +73,7 @@ function FilteredDishes(props) {
 
   //rendering
   return (
-    <div className="filterd-dishes">
+    <div className="filtred-dishes">
       {showPopup && (
         <Popup closePopup={closePopupHandler} currentDish={currentDish} />
       )}
