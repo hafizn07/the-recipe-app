@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CardDish from "./CardDish";
 import Pagination from "./Pagination";
+import { AllMenuContext } from './AllMenuContext';
+
 
 function FilteredDishes(props) {
 
-  let [allMenus, setAllMenus] = useState(props.allMenus)
+  const allMenus = useContext(AllMenuContext)
+
   let [filteredDishes, setFilteredDishes] = useState([])
   let [activeDish, setActiveDish] = useState("Beef")
   let [currentPage, setCurrentPage] = useState(1)

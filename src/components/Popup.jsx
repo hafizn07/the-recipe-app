@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AllMenuContext } from './AllMenuContext';
 
-function Popup({ closePopup, currentDish, allDishes }) { //props destructuring
 
-  let dishesDetails = allDishes.filter((menuItem) => {
+function Popup({ closePopup, currentDish }) { //props destructuring
+
+  const allMenus = useContext(AllMenuContext) 
+
+  let dishesDetails = allMenus.filter((menuItem) => {
     return menuItem.strMeal === currentDish
   }).map((item) => {
     return (
