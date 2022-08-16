@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import CardDish from "./CardDish";
 import Popup from "./Popup";
 import { AllMenuContext } from './AllMenuContext';
+import AddToCart from "./AddToCart";
 
 const SpecialDishes = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -34,6 +35,7 @@ const SpecialDishes = () => {
         <Popup closePopup={closePopupHandler} currentDish={currentDish} />
       )}
       <div className="container">
+        <AddToCart />
         <div className="special-dishes-content text-center">
           <h2>Our special dishes</h2>
           <p>

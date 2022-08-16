@@ -1,15 +1,46 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardDish from "./CardDish";
 import Popup from "./Popup";
 import Pagination from "./Pagination";
-import { AllMenuContext } from './AllMenuContext';
-
+import { AllMenuContext } from "./AllMenuContext";
 
 function FilteredDishes(props) {
+  const [category, setCategory] = useState([]);
+  const [singleDish, setSingleDish] = useState([]);
+  const allMenus = useContext(AllMenuContext);
   const [showPopup, setShowPopup] = useState(false);
   const [currentDish, setCurrentDish] = useState("");
+  const [filteredDishes, setFilteredDishes] = useState([]);
+  const [activeDish, setActiveDish] = useState("Beef");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(4);
+  let indexOfLastDish = currentPage * itemsPerPage;
+  let indexOfFirstDish = indexOfLastDish - itemsPerPage;
+  let showTheseDishesNow = filteredDishes.slice(
+    indexOfFirstDish,
+    indexOfLastDish
+  );
 
-  const allMenus = useContext(AllMenuContext)
+  //Get all the categories
+  async function getAllTheCategories() {
+    const API_URL = "https://www.themealdb.com/api/json/v1/1/categories.php";
+    let response = await fetch(API_URL);
+    let categoryData = await response.json();
+    setCategory(categoryData.categories);
+  }
+
+  //Get only one dish
+  async function getOnlyOneDish() {
+    const API_URL = "https://www.themealdb.com/api/json/v1/1/filter.php?c=Beef";
+    let response = await fetch(API_URL);
+    let singleDishData = await response.json();
+    setSingleDish(singleDishData.meals);
+  }
+
+  useEffect(() => {
+    getAllTheCategories();
+    getOnlyOneDish();
+  }, []);
 
   //function to show the popup
   function showPopupHandler(dishName) {
@@ -22,54 +53,48 @@ function FilteredDishes(props) {
     setShowPopup(false);
   }
 
-  let [filteredDishes, setFilteredDishes] = useState([])
-  let [activeDish, setActiveDish] = useState("Beef")
-  let [currentPage, setCurrentPage] = useState(1)
-  let [itemsPerPage, setItemsPerPage] = useState(4)
-
-  let indexOfLastDish = currentPage * itemsPerPage;
-  let indexOfFirstDish = indexOfLastDish - itemsPerPage;
-  let showTheseDishesNow = filteredDishes.slice(indexOfFirstDish, indexOfLastDish);
-
   //show only single dish
-
-  let maxSingleDish = 4
-  let singleDishItem = props.singleDish.map((item, index) => {
+  let maxSingleDish = 4;
+  let singleDishItem = singleDish.map((item, index) => {
     if (index < maxSingleDish) {
       return (
         <li>
           <img src={item.strMealThumb} className="br-10" alt="img" />
           <h5>{item.strMeal}</h5>
         </li>
-      )
+      );
     }
-  })
+  });
 
   //show dishes on onClick function
   function showFilteredDishesHandler(category) {
+    setSingleDish([]);
+    setActiveDish(category);
 
-    props.setSingleDish([])
-    setActiveDish(category)
+    let filteredDishesAre = allMenus
+      .filter((item) => {
+        return item.strCategory === category;
+      })
+      .map((menuItem) => {
+        return <CardDish menuItem={menuItem} showPopup={showPopupHandler} />;
+      });
 
-    let filteredDishesAre = allMenus.filter((item) => {
-      return item.strCategory === category
-    }).map((menuItem) => {
-      return <CardDish menuItem={menuItem} showPopup={showPopupHandler} />
-    })
-
-    setFilteredDishes(filteredDishesAre)
+    setFilteredDishes(filteredDishesAre);
   }
 
   //show all the categories in list
-  let menuCategories = props.menuCategories.map((item) => {
+  let menuCategories = category.map((item) => {
     return (
       <li
         className={item.strCategory === activeDish ? "active" : ""}
-        onClick={() => { showFilteredDishesHandler(item.strCategory) }}>
+        onClick={() => {
+          showFilteredDishesHandler(item.strCategory);
+        }}
+      >
         {item.strCategory}
       </li>
-    )
-  })
+    );
+  });
 
   //rendering
   return (
@@ -88,20 +113,20 @@ function FilteredDishes(props) {
         </div>
 
         <div className="filterd-dishes flex">
-          <ul>
-            {menuCategories}
-          </ul>
+          <ul>{menuCategories}</ul>
         </div>
 
         <div className="filtered-dishes-results flex">
           <ul className="flex flex-wrap gap-30">
             {singleDishItem}
-            {filteredDishes.length !== 0 || singleDishItem.length !== 0 ? showTheseDishesNow :
+            {filteredDishes.length !== 0 || singleDishItem.length !== 0 ? (
+              showTheseDishesNow
+            ) : (
               <div className="alert">
                 <h3> Sorry, No items found!!</h3>
                 <h4> Please try another dish </h4>
               </div>
-            }
+            )}
           </ul>
         </div>
 
@@ -111,10 +136,9 @@ function FilteredDishes(props) {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
         />
-
       </div>
     </div>
   );
-};
+}
 
 export default FilteredDishes;

@@ -259,7 +259,6 @@ header {
     display: flex;
     flex-wrap: wrap;
     margin-top: 30px;
-    width: 100%;
 
     li {
       background-color: #ffb902;
@@ -278,7 +277,6 @@ header {
 
       &:hover {
         background-color: black;
-        color: white;
       }
     }
   }
@@ -292,7 +290,7 @@ header {
   }
 
   li {
-    width: 20%;
+    width: 22%;
   }
 }
 
@@ -467,5 +465,28 @@ header {
     border-radius: 32px;
     font-size: 14px;
     margin-right: 12px;
+  }
+}
+
+// Add to cart styles
+.add-to-cart-wrapper {
+  width: 100px;
+  // height: 100%;
+  position: fixed;
+  top: 36%;
+  right: 0;
+  display: flex;
+  background-color: white;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+
+  .add-to-cart-item {
+    img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+    }
   }
 }
