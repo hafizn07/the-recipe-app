@@ -7,6 +7,7 @@ import AddToCart from "./AddToCart";
 const SpecialDishes = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [currentDish, setCurrentDish] = useState("");
+  const [addToCartItem, setAddToCartItem] = useState("")
 
   const allMenus = useContext(AllMenuContext)
 
@@ -21,6 +22,12 @@ const SpecialDishes = () => {
     setShowPopup(false);
   }
 
+  //Add to cart handler (from popup.js)
+  function addToCartHandler (addToCartImg, addToCartTitle){
+    // console.log(addToCartImg, addToCartTitle);
+    setAddToCartItem(addToCartImg)
+  }
+
   let maxSpecialDishes = 8;
 
   let specialMenu = allMenus.map((menuItem, index) => {
@@ -32,10 +39,14 @@ const SpecialDishes = () => {
   return (
     <section className="special-dishes">
       {showPopup && (
-        <Popup closePopup={closePopupHandler} currentDish={currentDish} />
+        <Popup 
+        closePopup={closePopupHandler} 
+        currentDish={currentDish} 
+        addToCartHandler={addToCartHandler} />
       )}
+
       <div className="container">
-        <AddToCart />
+        <AddToCart addToCartItem={addToCartItem} />
         <div className="special-dishes-content text-center">
           <h2>Our special dishes</h2>
           <p>

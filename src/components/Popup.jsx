@@ -2,9 +2,9 @@ import React, { useContext } from 'react'
 import { AllMenuContext } from './AllMenuContext';
 
 
-function Popup({ closePopup, currentDish }) { //props destructuring
+function Popup({ closePopup, currentDish, addToCartHandler }) { //props destructuring
 
-  const allMenus = useContext(AllMenuContext) 
+  const allMenus = useContext(AllMenuContext)
 
   let dishesDetails = allMenus.filter((menuItem) => {
     return menuItem.strMeal === currentDish
@@ -25,6 +25,9 @@ function Popup({ closePopup, currentDish }) { //props destructuring
           <li>{item.strIngredient3}</li>
           <li>{item.strIngredient4}</li>
         </ul>
+        <button 
+        onClick={() => addToCartHandler(item.strMealThumb, item.strMeal)}>Order now</button>
+        <h5 className='popup-close' onClick={closePopup}>Close</h5>
       </div>
     )
   })
@@ -33,8 +36,6 @@ function Popup({ closePopup, currentDish }) { //props destructuring
     <div className='popup'>
       <div className="popup-content">
         {dishesDetails}
-        <button>Order now</button>
-        <h5 className='popup-close' onClick={closePopup}>Close</h5>
       </div>
     </div>
   )
