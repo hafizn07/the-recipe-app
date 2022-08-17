@@ -7,7 +7,7 @@ import AddToCart from "./AddToCart";
 const SpecialDishes = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [currentDish, setCurrentDish] = useState("");
-  const [addToCartItem, setAddToCartItem] = useState("")
+  const [addToCartItem, setAddToCartItem] = useState([]);
 
   const allMenus = useContext(AllMenuContext)
 
@@ -24,8 +24,15 @@ const SpecialDishes = () => {
 
   //Add to cart handler (from popup.js)
   function addToCartHandler (addToCartImg, addToCartTitle){
-    // console.log(addToCartImg, addToCartTitle);
-    setAddToCartItem(addToCartImg)
+    setAddToCartItem(
+      [
+        ...addToCartItem,
+        {
+          "img" : addToCartImg,
+          "title" : addToCartTitle
+        }
+      ]
+    )
   }
 
   let maxSpecialDishes = 8;

@@ -3,6 +3,7 @@ import CardDish from "./CardDish";
 import Popup from "./Popup";
 import Pagination from "./Pagination";
 import { AllMenuContext } from "./AllMenuContext";
+import AddToCart from "./AddToCart";
 
 function FilteredDishes(props) {
   const [category, setCategory] = useState([]);
@@ -14,6 +15,8 @@ function FilteredDishes(props) {
   const [activeDish, setActiveDish] = useState("Beef");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [addToCartItem, setAddToCartItem] = useState([]);
+
   let indexOfLastDish = currentPage * itemsPerPage;
   let indexOfFirstDish = indexOfLastDish - itemsPerPage;
   let showTheseDishesNow = filteredDishes.slice(
@@ -52,6 +55,20 @@ function FilteredDishes(props) {
   function closePopupHandler() {
     setShowPopup(false);
   }
+
+  //Add to cart handler (from popup.js)
+  function addToCartHandler (addToCartImg, addToCartTitle){
+    setAddToCartItem(
+      [
+        ...addToCartItem,
+        {
+          "img" : addToCartImg,
+          "title" : addToCartTitle
+        }
+      ]
+    )
+  }
+
 
   //show only single dish
   let maxSingleDish = 4;
@@ -100,9 +117,13 @@ function FilteredDishes(props) {
   return (
     <div className="filtred-dishes">
       {showPopup && (
-        <Popup closePopup={closePopupHandler} currentDish={currentDish} />
+        <Popup 
+        closePopup={closePopupHandler} 
+        currentDish={currentDish} 
+        addToCartHandler={addToCartHandler} />
       )}
       <div className="container">
+      <AddToCart addToCartItem={addToCartItem} />
         <div className="text-center">
           <h2>Choose your dishes</h2>
           <p>
@@ -112,21 +133,21 @@ function FilteredDishes(props) {
           </p>
         </div>
 
-        <div className="filterd-dishes flex">
+        <div className="filterd-dishes">
           <ul>{menuCategories}</ul>
         </div>
 
-        <div className="filtered-dishes-results flex">
+        <div className="filtered-dishes-results">
           <ul className="flex flex-wrap gap-30">
             {singleDishItem}
-            {filteredDishes.length !== 0 || singleDishItem.length !== 0 ? (
-              showTheseDishesNow
-            ) : (
-              <div className="alert">
-                <h3> Sorry, No items found!!</h3>
-                <h4> Please try another dish </h4>
-              </div>
-            )}
+            {filteredDishes.length !== 0 || singleDishItem.length !== 0 ?
+              (showTheseDishesNow)
+              : (
+                <div className="alert">
+                  <h3> Sorry, No items found!!</h3>
+                  <h4> Please try another dish </h4>
+                </div>
+              )}
           </ul>
         </div>
 
