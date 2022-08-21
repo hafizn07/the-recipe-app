@@ -1,10 +1,13 @@
 import React, { useContext } from 'react'
 import { AllMenuContext } from './AllMenuContext';
+import { DispatchContext } from '../context/AppProvider'
 
 
 function Popup({ closePopup, currentDish, addToCartHandler }) { //props destructuring
 
   const allMenus = useContext(AllMenuContext)
+  const dispatch = useContext(DispatchContext)
+  console.log("Dispatch : ", dispatch);
 
   let dishesDetails = allMenus.filter((menuItem) => {
     return menuItem.strMeal === currentDish
@@ -25,8 +28,16 @@ function Popup({ closePopup, currentDish, addToCartHandler }) { //props destruct
           <li>{item.strIngredient3}</li>
           <li>{item.strIngredient4}</li>
         </ul>
-        <button 
-        onClick={() => addToCartHandler(item.strMealThumb, item.strMeal)}>Order now</button>
+        <button
+          onClick={() => {
+            dispatch({type: "add_to_cart", payload: {
+              title: item.strMeal ,
+              img: item.strMealThumb,
+            }
+          })
+          }}> Add to cart </button>
+
+        {/* onClick={() => addToCartHandler(item.strMealThumb, item.strMeal)}>Add to Cart */}
         <h5 className='popup-close' onClick={closePopup}>Close</h5>
       </div>
     )
