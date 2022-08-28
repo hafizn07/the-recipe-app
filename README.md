@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <br>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="public/logo512.png" alt="Covid-19 Tracker" width="200" style="border-radius:10px"></a>
+  <br>
+  The Recipe App
+  <br>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h4 align="center">A web app which provides you the various recipies of different dishes </h4>
 
-## Available Scripts
+<p align="center">
+  <a href="#🚀-overview">Overview</a> •
+  <a href="#🚀-built-with">Build with</a> •
+  <a href="#🚀-dependencies-used">Dependencies</a> •
+  <a href="#🚀-how-to-use">How to use</a> •
+  <a href="#🚀-links">Live links</a>
+</p>
 
-In the project directory, you can run:
+<h5 align="center">Don't forget to give a ⭐️ </h5>
 
-### `npm start`
+<hr>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![screenshot](public/preview.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🚀 Overview
 
-### `npm test`
+- View the optimal layout for the app depending on their device's screen size.
+- Gets the details of the recipies of different dishes.
+- Search by category feature.
+- User can make favorite to the dishes like. 
+- Researched `Components` in Ant Design and `Emmet` cheat sheats .
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<hr>
 
-### `npm run build`
+## 🚀 Built with
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [![Reactjs][reactjs]][reactjs-url] 
+- [![TheMealDB API][TheMealDB API]][TheMealDB API-url]  
+- [![sass][sass]][sass-url]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Dependencies Used
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h3>The following dependencies are used in this project:</h3>
 
-### `npm run eject`
+<p>
+<img src="https://img.shields.io/badge/node--sass-v7.0.1-3CCF4E"> 
+<img src="https://img.shields.io/badge/react--router--dom-v6.3.0-3CCF4E">
+</p>
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<hr>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🚀 How To Use
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+To clone and run this application, you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+# Clone this repository
+$ git clone https://github.com/hafizmp/the-recipe-app.git
 
-## Learn More
+# Go into the repository
+$ cd disney-plus-clone
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Install dependencies
+$ npm install
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Run the app
+$ npm start
+```
 
-### Code Splitting
+> **Note**
+> If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🚀 Links
 
-### Analyzing the Bundle Size
+- Solution URL: [GitHub](https://github.com/hafizmp/the-recipe-app)
+- Live Site URL: [Cryptovest App](https://crypto-vest.netlify.app/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<hr>
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[reactjs]: https://img.shields.io/badge/REACT%20JS-000000?style=for-the-badge&logo=REACT&logoColor=61DBFB
+[reactjs-url]: https://reactjs.org/
 
-### Advanced Configuration
+[sass]: https://img.shields.io/badge/sass-EE6983?style=for-the-badge&logo=sass&logoColor=fff
+[sass-url]: https://sass-lang.com/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[TheMealDB API]: https://img.shields.io/badge/TheMealDB%20API-1C3879?style=for-the-badge&logo=&logoColor=21E1E1
+[TheMealDB API-url]: https://www.themealdb.com/api.php
