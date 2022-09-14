@@ -27,7 +27,7 @@
 - View the optimal layout for the app depending on their device's screen size.
 - Gets the details of the recipies of different dishes.
 - Search by category feature.
-- User can make favorite to the dishes like. 
+- User can make favorite to the dishes they like. 
 - Researched `Components` in Ant Design and `Emmet` cheat sheats .
 
 <hr>
