@@ -37,6 +37,7 @@ const SpecialDishes = () => {
 
   let maxSpecialDishes = 8;
 
+  // eslint-disable-next-line array-callback-return
   let specialMenu = allMenus.map((menuItem, index) => {
     if (index < maxSpecialDishes) {
       return <CardDish menuItem={menuItem} showPopup={showPopupHandler} />;

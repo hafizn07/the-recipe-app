@@ -31,7 +31,7 @@ const Checkout = () => {
                   <p>$5.00</p>
                 </div>
                 <div className="cartSection removeWrap">
-                  <a href="#" className="remove">
+                  <a href="#remove" className="remove">
                     x
                   </a>
                 </div>

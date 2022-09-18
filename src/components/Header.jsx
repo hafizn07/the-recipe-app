@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function Header() {
     return (
         <header className="flex flex-center flex-between">
-            <a href="" className="logo">
+            <a href="#home" className="logo">
                 Food Diary
             </a>
             <nav>

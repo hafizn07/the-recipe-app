@@ -14,7 +14,7 @@ function FilteredDishes(props) {
   const [filteredDishes, setFilteredDishes] = useState([]);
   const [activeDish, setActiveDish] = useState("Beef");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4);
+  const [itemsPerPage] = useState(4);
   const [addToCartItem, setAddToCartItem] = useState([]);
 
   let indexOfLastDish = currentPage * itemsPerPage;
@@ -72,6 +72,7 @@ function FilteredDishes(props) {
 
   //show only single dish
   let maxSingleDish = 4;
+  // eslint-disable-next-line array-callback-return
   let singleDishItem = singleDish.map((item, index) => {
     if (index < maxSingleDish) {
       return (
@@ -94,7 +95,7 @@ function FilteredDishes(props) {
       })
       .map((menuItem) => {
         return <CardDish menuItem={menuItem} showPopup={showPopupHandler} />;
-      });
+      })
 
     setFilteredDishes(filteredDishesAre);
   }
