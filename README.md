@@ -74,7 +74,7 @@ $ npm start
 ## 🚀 Links
 
 - Solution URL: [GitHub](https://github.com/hafizmp/the-recipe-app)
-- Live Site URL: [Food Diary](https://)
+- Live Site URL: [Food Diary](https://foodrecipediary.netlify.app/)
 
 <hr>
 
